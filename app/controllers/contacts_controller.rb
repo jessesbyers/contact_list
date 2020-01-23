@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
     end
 
     def create
-        @contact = Contact.new(contact_params)
+        @contact = Contact.new(contact_params) 
         @contact.save
         redirect_to contact_path(@contact)
     end

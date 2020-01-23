@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
     end
 
     def create
-        @contact = Contact.new(contact_params(:name, :address, :phone, :email, :pets_attributes [:name], pets_attributes: [:breed]))
+        @contact = Contact.new(contact_params)
         @contact.save
         redirect_to contact_path(@contact)
     end
@@ -20,7 +20,7 @@ class ContactsController < ApplicationController
     end
 
     def update
-        @contact.update(contact_params(:name, :address, :phone, :email, :pets_attributes [:name], pets_attributes: [:breed]))
+        @contact.update(contact_params)
         redirect_to contact_path(@contact)
     end
 
@@ -34,8 +34,9 @@ class ContactsController < ApplicationController
 
     private 
 
-    def contact_params(*args)
-        params.require(:contact).permit(*args)
+    def contact_params
+        params.require(:contact).permit(:user_id, :name, :address, :phone, :email, pets_attributes: [:name, :breed])
+
     end
 
     def set_contact

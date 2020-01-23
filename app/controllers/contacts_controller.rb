@@ -7,10 +7,11 @@ class ContactsController < ApplicationController
     
     def new
         @contact = Contact.new
+        3.times { @contact.pets.build }
     end
 
     def create
-        @contact = Contact.new(contact_params(:name, :address, :phone, :email; :pets_attributes => [][:name][:breed]))
+        @contact = Contact.new(contact_params(:name, :address, :phone, :email, :pets_attributes [:name], pets_attributes: [:breed]))
         @contact.save
         redirect_to contact_path(@contact)
     end
@@ -19,7 +20,7 @@ class ContactsController < ApplicationController
     end
 
     def update
-        @contact.update(contact_params(:name, :address, :phone, :email; :pets_attributes => [][:name][:breed]))
+        @contact.update(contact_params(:name, :address, :phone, :email, :pets_attributes [:name], pets_attributes: [:breed]))
         redirect_to contact_path(@contact)
     end
 

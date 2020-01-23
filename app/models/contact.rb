@@ -4,8 +4,8 @@ class Contact < ApplicationRecord
     # accepts_nested_attributes_for :pets
 
     def pets_attributes=(pets_attributes)
-        pets_attributes.each do |pet_attributes|
-            pet = Pet.find_or_create_by(pet_attribute)
+        pets_attributes.each do |pet_attribute|
+            pet = Pet.create(pet_attribute)
             self.pets << pet
         end
     end

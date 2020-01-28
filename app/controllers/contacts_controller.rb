@@ -12,8 +12,11 @@ class ContactsController < ApplicationController
 
     def create
         @contact = Contact.new(contact_params) 
-        @contact.save
-        redirect_to contact_path(@contact)
+        if @contact.save
+            redirect_to contact_path(@contact)
+        else
+            render :new
+        end
     end
 
     def edit

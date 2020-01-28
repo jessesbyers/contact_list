@@ -6,8 +6,10 @@ class Contact < ApplicationRecord
 
     # def pets_attributes=(pets_attributes)
     #     pets_attributes.values.each do |pet_attribute|
-    #         pet = Pet.find_or_create_by(pet_attribute)
-    #         self.pets << pet
+    #         if pet_attribute[:name] != "" && pet_attribute[:breed] != ""
+    #             pet = Pet.find_or_create_by(pet_attribute)
+    #             self.pets << pet
+    #         end
     #     end
     # end
 end

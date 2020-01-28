@@ -27,6 +27,7 @@
 
     <%= f.fields_for :pets do |ff| %>
         <div>
+            <%= ff.hidden_field :id %>
             <%= ff.label :name %>
             <%= ff.text_field :name %>
             <br>
